@@ -1,8 +1,16 @@
 {% extends 'todo_temp/base.html' %}
+{% load static %}
+{% block title %}
+    {% if title %}
+        {{ title }}
+    {% else %}
+        {{ none }}
+    {% endif %}
+{% endblock %}
 {% block content %}
     <div class="text-center">
         <div class="container">
-            <h1>Todo Application</h1>
+            <h1><b>Todo Application</b></h1>
         </div>
     </div>
 
@@ -20,19 +28,19 @@
         <ul class="list-group">
             {% for i in data %}
                 <li class="list-group-item list-group-item-primary mt-2">
-                    {% if i.complete %}
+                    {% if i.completed %}
                         <del>{{ i.title }}</del>
-                    {% elif i.complete != "True" %}
+                    {% elif i.completed != "True" %}
                         {{ i.title }}
                     {% endif %}
                     <a href="{% url 'delete' i.id %}">
                         <button type="button" class="btn btn-danger float-right">Delete</button>
                     </a>
-                    {% if i.complete %}
-                        <a href="{% url 'in_complete' i.id %}">
+                    {% if i.completed %}
+                        <a href="{% url 'complete' i.id %}">
                             <button type="submit" class="btn btn-success float-right mr-2">Completed</button>
                         </a>
-                    {% elif i.complete != "True" %}
+                    {% elif i.completed != "True" %}
                         <a href="{% url 'complete' i.id %}">
                             <button type="submit" class="btn btn-success float-right mr-2">Complete</button>
                         </a>

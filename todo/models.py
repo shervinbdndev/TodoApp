@@ -9,5 +9,8 @@ class TodoDatabase(models.Model):
 
     def __str__(self) -> str:
         super(TodoDatabase , self).__str__()
-
         return self.title
+    
+    class Meta:
+        verbose_name = 'Todo Table'
+        verbose_name_plural = 'List Of Todos'

@@ -1,27 +1,40 @@
+from django.urls.base import reverse
 from django.shortcuts import (render , redirect)
-from django.http import HttpResponse
+from django.http.request import HttpRequest
+from django.views.generic.base import View
 from .models import TodoDatabase
 
 
-def home(request):
-    if (request.method == "POST"):
-        title = request.POST.get("title")
-        if (title is not None):
+
+
+
+class HomeView(View):
+    def get(self , request : HttpRequest):
+        data : TodoDatabase = TodoDatabase.objects.all()
+        return render(request=request , template_name='todo_temp/index.html' , context={'data' : data , 'title' : 'Todo Application'})
+    
+    def post(self , request : HttpRequest):
+        title = request.POST.get('title')
+        data : TodoDatabase = TodoDatabase(request.POST or None)
+        if (data is not None):
             TodoDatabase.objects.create(title = title)
-        return redirect("home")
-
-    data = TodoDatabase.objects.all()
-    return render(request , "todo_temp/index.html" , {"data" : data})
+        return redirect(to=reverse(viewname='home'))
 
 
-def delete(request , id = None):
-    data = TodoDatabase.objects.get(id = id)
-    data.delete()
-    return redirect("home")
 
 
-def complete(request , id = None):
-    data = TodoDatabase.objects.get(id = id)
-    data.complete = True
-    data.save()
-    return redirect("home")
+class DeleteView(View):
+    def get(self , request : HttpRequest , id = None):
+        data : TodoDatabase = TodoDatabase.objects.get(id = id)
+        data.delete()
+        return redirect(to=reverse(viewname='home'))
+
+
+
+
+class CompleteView(View):
+    def get(self , request : HttpRequest , id = None):
+        data : TodoDatabase = TodoDatabase.objects.get(id = id)
+        data.completed = True
+        data.save()
+        return redirect(to=reverse(viewname='home'))
