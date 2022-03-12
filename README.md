@@ -1,4 +1,4 @@
-<h1 align='center' style="font-size:5rem"><b>Django Send Resume Form</b></h1>
+<h1 align='center' style="font-size:5rem"><b>Django Todo Application</b></h1>
 <div align='center'>
     <img src="https://github.com/shervinbdndev/TodoApp/blob/master/preview/todo.png"></img>
 </div>
