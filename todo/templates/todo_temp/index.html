@@ -1,0 +1,44 @@
+{% extends 'todo_temp/base.html' %}
+{% block content %}
+    <div class="text-center">
+        <div class="container">
+            <h1>Todo Application</h1>
+        </div>
+    </div>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="container mt-5">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control mr-2" id="title" name="title" aria-label="" aria-describedby="basic-addon1" placeholder="Enter Your Task . . .">
+                <button class="btn btn-primary btn-lg" type="submit">Add Task</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="container">
+        <ul class="list-group">
+            {% for i in data %}
+                <li class="list-group-item list-group-item-primary mt-2">
+                    {% if i.complete %}
+                        <del>{{ i.title }}</del>
+                    {% elif i.complete != "True" %}
+                        {{ i.title }}
+                    {% endif %}
+                    <a href="{% url 'delete' i.id %}">
+                        <button type="button" class="btn btn-danger float-right">Delete</button>
+                    </a>
+                    {% if i.complete %}
+                        <a href="{% url 'in_complete' i.id %}">
+                            <button type="submit" class="btn btn-success float-right mr-2">Completed</button>
+                        </a>
+                    {% elif i.complete != "True" %}
+                        <a href="{% url 'complete' i.id %}">
+                            <button type="submit" class="btn btn-success float-right mr-2">Complete</button>
+                        </a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
