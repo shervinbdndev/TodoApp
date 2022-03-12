@@ -15,7 +15,7 @@
 - [x] Able To Customize Admin Panel
 - [x] Able To Create Super Users Such as Admin
 - [x] Able To Use Any Type of Databases (Current Database is Sqlite3)
-- [x] Able To Add , Delete and Mark The Todo as Completed in Your List
+- [x] Able To Add , Delete and Mark your Events as Completed in Your List
 - [x] Responsive Site (Optimization)
 - [x] Backend Security
 
