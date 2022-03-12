@@ -8,7 +8,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path(route='admin/', view=admin.site.urls , name='admin'),
-    path(route='' , view=include("todo.urls" , name='index'))
+    path(route='' , view=include("todo.urls" , name='index')) 
 ]
 
 
