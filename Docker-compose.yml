@@ -1,0 +1,7 @@
+version: '4'
+services:
+  web:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:3000
+    ports:
+      - 3000:3000

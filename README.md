@@ -45,10 +45,11 @@
 
 <h1 align='center'><b>Installation</b></h1>
 
-```py
-~ pip3 install django
-~ pip3 install -U django
+<b>Linux</b>: 
+Run The Command Below On Terminal 👇
 ```
+~ sudo apt install docker && sudo apt install docker-compose
+``` 
 
 <br>
 
@@ -58,21 +59,11 @@ First of All Clone the project from here  `~ git clone https://github.com/shervi
 
 Then go To Project's Directory with  ``~ cd TodoApp`` No Matters if Your Using Windows or Linux.
 
-Run The Code Below 👇
+Run The Commands Below On Terminal 👇
 
-```python
-~ python manage.py runserver 3000
 ```
+~ docker-compose build
+~ docker-compose up
+```
+
 After that you need to open  ``http://127.0.0.1:3000`` for accessing the website.
-
-Synchronize your database 👇
-
-```python
-~ python manage.py syncdb
-```
-
-If you want to create Admin 👇
-
-```python
-~ python manage.py createsuperuser
-```
