@@ -45,7 +45,7 @@
 
 <h1 align='center'><b>Installation</b></h1>
 
-<b>Linux</b>: 
+<h2><b>Linux</b>:</h2> <br>
 Run The Command Below On Terminal 👇
 ```
 ~ sudo apt install docker && sudo apt install docker-compose
